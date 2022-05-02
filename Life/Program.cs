@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System.IO;
 
 namespace cli_life
@@ -31,25 +31,33 @@ namespace cli_life
     {
         public readonly Cell[,] Cells;
         public readonly int CellSize;
-        public int Height { 
-            get { 
-                return Rows * CellSize; 
-            } 
+        public int Height
+        {
+            get
+            {
+                return Rows * CellSize;
+            }
         }
-        public int Width { 
-            get { 
-                return Columns * CellSize; 
-            } 
+        public int Width
+        {
+            get
+            {
+                return Columns * CellSize;
+            }
         }
-        public int Columns { 
-            get { 
-                return Cells.GetLength(0); 
-            } 
+        public int Columns
+        {
+            get
+            {
+                return Cells.GetLength(0);
+            }
         }
-        public int Rows { 
-            get {
-                return Cells.GetLength(1); 
-            } 
+        public int Rows
+        {
+            get
+            {
+                return Cells.GetLength(1);
+            }
         }
         public Board(Configuration configuration)
         {
@@ -112,34 +120,38 @@ namespace cli_life
             public double LiveDensity { get; set; }
         }
         Data data;
-         public int Height
+        public int Height
         {
-            get { 
-                return data.Height; 
+            get
+            {
+                return data.Height;
             }
         }
         public int Width
         {
-            get { 
+            get
+            {
                 return data.Width;
             }
         }
-       
+
         public int CellSize
         {
-            get {
-                return data.CellSize; 
-            }  
+            get
+            {
+                return data.CellSize;
+            }
         }
         public double LiveDensity
         {
-            get { 
-                return data.LiveDensity; 
+            get
+            {
+                return data.LiveDensity;
             }
         }
         public void LoadConfig(String path)
         {
-            data = JsonConvert.DeserializeObject<Data>(File.ReadAllText(path));
+            data = JsonSerializer.Deserialize<Data>(File.ReadAllText(path));
         }
         public void LoadState(Board board, String path)
         {
@@ -216,9 +228,9 @@ namespace cli_life
         static void Main(string[] args)
         {
             Configuration configuration = new Configuration();
-            configuration.LoadConfig("C:\\LabsMipis\\mip4\\mod-task04-life\\Life\\Configuration.json");
+            configuration.LoadConfig("mod-task04-life\\Life\\Configuration.json");
             Reset(configuration);
-            configuration.LoadState(board, "C:\\LabsMipis\\mip4\\mod-task04-life\\Life\\save.txt");
+            configuration.LoadState(board, "mod-task04-life\\Life\\save.txt");
             while (true)
             {
                 Console.Clear();
