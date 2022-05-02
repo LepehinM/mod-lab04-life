@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System.IO;
 
 namespace cli_life
