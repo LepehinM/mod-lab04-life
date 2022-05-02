@@ -216,14 +216,14 @@ namespace cli_life
         static void Main(string[] args)
         {
             Configuration configuration = new Configuration();
-            configuration.LoadConfig("C:\LabsMipis\mip4\mod-task04-life\\Life\\Configuration.json");
+            configuration.LoadConfig("C:\\LabsMipis\\mip4\\mod-task04-life\\Life\\Configuration.json");
             Reset(configuration);
-            configuration.LoadState(board, "C:\LabsMipis\mip4\mod-task04-life\\Life\\save.txt");
+            configuration.LoadState(board, "C:\\LabsMipis\\mip4\\mod-task04-life\\Life\\save.txt");
             while (true)
             {
                 Console.Clear();
                 Render();
-                configuration.SaveState(board, "C:\LabsMipis\mip4\mod-task04-life\\Life\\save.txt");
+                configuration.SaveState(board, "C:\\LabsMipis\\mip4\\mod-task04-life\\Life\\save.txt");
                 board.Advance();
                 Thread.Sleep(1000);
             }
